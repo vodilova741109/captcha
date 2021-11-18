@@ -23,7 +23,7 @@ function capthaControl() {
   function numRandom() {
     number = Math.ceil(Math.random() * 10);
     numberText = Math.ceil(Math.random() * 10);
-    const arr = [
+    const arrayTextNumber = [
       "один",
       "два",
       "три",
@@ -35,12 +35,12 @@ function capthaControl() {
       "девять",
       "десять",
     ];
-    numberStrText = arr[numberText - 1];
+    numberStrText = arrayTextNumber[numberText - 1];
     return numberStrText;
   }
   /**
-   * функция получает данные о сгенерированных числах, добавляет их текст и
-   * методом fillText() рисует на холсте текст   *
+   * функция получает данные о сгенерированных числах, добавляет их  и
+   * методом fillText() рисует на холсте текст 
    */
 
   function textCanvas() {
