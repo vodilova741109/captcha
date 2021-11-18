@@ -1,18 +1,28 @@
 "use strict";
 function capthaControl() {
-  const input = document.querySelector("input"),
-    answer = document.querySelector(".answer"),
-    btn = document.querySelector("button"),
-    canvas = document.getElementById("drawtext_demo"),
-    context = canvas.getContext("2d");
+  const inputElement = document.querySelector("input");
+  const answer = document.querySelector(".answer");
+  const btnCheck = document.querySelector("button");
+  const canvas = document.getElementById("drawtext_demo");
+  const context = canvas.getContext("2d");
 
-  let num = 0,
-      num2 = 0,
-      a = "";
+  let number = 0; // рандомное число 1
+  let numberText = 0; // рандомное число 2 type число
+  let numberStrText = ""; // рандомное число 2 type строка
 
+  function start() {
+    numRandom();
+    textCanvas();
+    btnCheck.addEventListener("click", check);
+  }
+  start();
+  /**
+   * Генерируем 2 рандомных числа
+   * Второе число из типа число преобразуем в строку
+   */
   function numRandom() {
-    num = Math.ceil(Math.random() * 10);
-    num2 = Math.ceil(Math.random() * 10);
+    number = Math.ceil(Math.random() * 10);
+    numberText = Math.ceil(Math.random() * 10);
     const arr = [
       "один",
       "два",
@@ -25,26 +35,33 @@ function capthaControl() {
       "девять",
       "десять",
     ];
-    a = arr[num2 - 1];
-    return a;
+    numberStrText = arr[numberText - 1];
+    return numberStrText;
   }
-
-  // центрируем текст
-  let xPos = canvas.width / 2;
-  let yPos = canvas.height / 2;
+  /**
+   * функция получает данные о сгенерированных числах, добавляет их текст и
+   * методом fillText() рисует на холсте текст   *
+   */
 
   function textCanvas() {
+    // центрируем текст
+    let xPos = canvas.width / 2;
+    let yPos = canvas.height / 2;
     // передаем данные в канвас
-    let mText = num + " * " + a + " = ";
+    let mText = number + " * " + numberStrText + " = ";
+    // стили текста
     context.font = "60pt Comic Sans MS";
     context.fillStyle = "lime";
     context.textAlign = "center";
     context.textBaseline = "middle";
+
     context.fillText(mText, xPos, yPos);
   }
-
+  /**
+   * Проверка на правильность решения
+   */
   function check() {
-    if (+input.value === num * num2) {
+    if (+inputElement.value === number * numberText) {
       answer.innerHTML = "Верно";
     } else {
       answer.innerHTML = "Не верно";
@@ -54,12 +71,8 @@ function capthaControl() {
       numRandom();
       textCanvas();
     }
-    input.value = "";
+    inputElement.value = "";
   }
-  numRandom();
-  textCanvas();
-
-  btn.addEventListener("click", check);
 }
 
 capthaControl();
