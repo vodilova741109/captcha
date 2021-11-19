@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">     
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Капча</title>
+</head>
+<body>
+    <div class="container">
+        <div class="text">Пожалуйста введите ответ цифрами:</div>
+        <div class="row">
+            <canvas id="drawtext"></canvas>           
+            <input type="text">            
+        </div>      
+        <button>Проверить</button>
+        <span class="answer"></span>
+    </div>   
+
+  <script type="module">
+     import {capthaControl} from "./javascript.js";   
+      const captha = new capthaControl({
+          // Global style
+        colorActive: '#666',
+        fontSizeActive: '20px',
+        textAlignActive: "center",
+        borderRadiusActive: "7px",
+        colorPozitiv: '#2fe056',
+        colorNegativ: '#e02f2f',
+
+      });
+      captha.start();      
+  </script>
+  
+  
+
+</body>
+</html>

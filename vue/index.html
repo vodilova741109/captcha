@@ -7,21 +7,32 @@
     <title>Капча</title>
 </head>
 <body>
-    <div class="container">
-        <div class="text">Пожалуйста введите ответ цифрами:</div>
+    <div class="container" id="app">
+    <div class="text">{{title}}: {{counter}} </div>
+        
         <div class="row">
             <canvas id="drawtext"></canvas>           
-            <input type="text">            
+            <input 
+            type="text" 
+            v-bind:placeholder="placeholderStr" 
+            v-bind:value="inputValue"
+            v-on:input="inputChange"            
+            />            
         </div>      
-        <button>Проверить</button>
-        <span class="answer"></span>
+        <button v-on:click="counter++">Проверить</button>
+        <span class="answer"> {{ inputValue }}</span>
+        <hr>
     </div>   
 
-  <script type="module">
+
+ <script src="https://unpkg.com/vue@next"></script>
+ <script src="js.js"></script>
+
+  <!-- <script type="module">
      import {capthaControl} from "./javascript.js";   
       const captha = new capthaControl({
           // Global style
-        colorActive: '#00000',
+        colorActive: '#666',
         fontSizeActive: '20px',
         textAlignActive: "center",
         borderRadiusActive: "7px",
@@ -29,9 +40,10 @@
         colorNegativ: '#e02f2f',
 
       });
-      captha.start();      
+      
+      captha.start();          
   </script>
-  
+   -->
   
 
 </body>
