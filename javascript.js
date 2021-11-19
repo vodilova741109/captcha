@@ -1,8 +1,18 @@
 /**
  * Инициализация капчи
  */
-class capthaControl {
+
+ export class capthaControl {
   constructor(config){    
+    // SET CONFIG PARAMETRES
+    this.colorActive = config.colorActive || '#474a51';
+    this.colorPozitiv= config.colorPozitiv || 'green';
+    this.colorNegativ = config.colorNegativ || 'red';
+    this.fontSizeActive = config.fontSizeActive || '18px';
+    this.textAlignActive = config.textAlignActive || "center";
+    this.borderRadiusActive = config.borderRadiusActive ||"5px";
+
+
    // Elements DOM
    this.containerElement = document.querySelector(".container");
    this.rowElement = document.querySelector(".row");
@@ -11,6 +21,7 @@ class capthaControl {
    this.btnCheckElement = document.querySelector("button");
    this.canvasElement = document.getElementById("drawtext");
    this.contextElement = this.canvasElement.getContext("2d");
+   
   //  rener number
    this.number = 0; // рандомное число 1
    this.numberText = 0; // рандомное число 2 type число
@@ -29,13 +40,7 @@ class capthaControl {
   /**
    * назначаем стили элементам Dom
    */
-  styleElements() {   
-    // Global style
-    this.colorActive = '#474a51';
-    this.fontSizeActive = '20px';
-    this.textAlignActive = "center";
-    this.borderRadiusActive = "5px";
-
+  styleElements() {        
     // стили container
     this.containerElement.style.margin  = '10%';
     this.containerElement.style.width = '450px';
@@ -128,10 +133,10 @@ class capthaControl {
   check() {
     if (+this.inputElement.value === this.number * this.numberText) {
       this.answerElement.innerHTML = "Верно";
-      this.answerElement.style.color = 'green';
+      this.answerElement.style.color = this.colorPozitiv;
     } else {
       this.answerElement.innerHTML = "Не верно";
-      this.answerElement.style.color = 'red';         
+      this.answerElement.style.color = this.colorNegativ;         
       // Очиста всего холста
       this.contextElement.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
       // новая генерация
@@ -140,13 +145,5 @@ class capthaControl {
     }
     this.inputElement.value = "";
   }
-
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  "use strict";
-  const capthaFirs = new capthaControl();
-
-  capthaFirs.start();
-
-});

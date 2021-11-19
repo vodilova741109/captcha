@@ -16,6 +16,23 @@
         <button>Проверить</button>
         <span class="answer"></span>
     </div>   
-    <script src="javascript-oop.js"></script>
+
+  <script type="module">
+     import {capthaControl} from "./javascript.js";   
+      const captha = new capthaControl({
+          // Global style
+        colorActive: '#00000',
+        fontSizeActive: '20px',
+        textAlignActive: "center",
+        borderRadiusActive: "7px",
+        colorPozitiv: '#2fe056',
+        colorNegativ: '#e02f2f',
+
+      });
+      captha.start();      
+  </script>
+  
+  
+
 </body>
 </html>
