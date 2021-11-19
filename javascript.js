@@ -37,9 +37,10 @@ function capthaControl() {
 
     // стили container
     containerElement.style.margin  = '10%';
-    containerElement.style.width = '500px';
+    containerElement.style.width = '450px';
     containerElement.style.color = colorActive; 
-    containerElement.style.fontSize = fontSizeActive;   
+    containerElement.style.fontSize = fontSizeActive;  
+    containerElement.style.fontWeight = 'bold';   
     containerElement.style.boxShadow = '0 0 10px rgba(0,0,0,0.5)';
     containerElement.style.padding = '20px';
     containerElement.style.borderRadius = borderRadiusActive;
@@ -57,6 +58,7 @@ function capthaControl() {
     inputElement.style.fontSize = fontSizeActive;
     inputElement.style.color = colorActive;   
     inputElement.style.padding = '15px 0';
+    inputElement.style.maxWidth = '130px';
     inputElement.style.boxShadow = '0 0 5px rgba(0,0,0,0.5)';
     inputElement.style.outline = 'none';
 
@@ -71,9 +73,7 @@ function capthaControl() {
     btnCheckElement.style.color = '#fff';
     btnCheckElement.style.boxShadow = '0 0 5px rgba(0,0,0,0.5)';
 
-    // стили answer
-    answerElement.style.color = colorActive;   
-    answerElement.style.fontWeight = 'bold';   
+    // стили answer   
     answerElement.style.fontSize = fontSizeActive;   
     answerElement.style.marginLeft  = '20px';
   
