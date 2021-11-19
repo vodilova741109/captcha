@@ -126,9 +126,8 @@ function capthaControl() {
    */
   function check() {
     if (+inputElement.value === number * numberText) {
-      answerElement.innerHTML = "Верно"
-      const colorActive = '#474a51';      
-      answerElement.style.color = colorActive;   
+      answerElement.innerHTML = "Верно";
+      answerElement.style.color = 'green';
       
     } else {
       answerElement.innerHTML = "Не верно";
@@ -143,5 +142,4 @@ function capthaControl() {
   }
 
 }
-
 capthaControl();
